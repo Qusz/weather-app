@@ -232,7 +232,7 @@ export const countryList = {
   "UG": "Uganda",
   "UA": "Ukraine",
   "AE": "United Arab Emirates",
-  "GB": "United Kingdom of Great Britain and Northern Ireland",
+  "UK": "United Kingdom of Great Britain and Northern Ireland",
   "UM": "United States Minor Outlying Islands",
   "US": "United States of America",
   "UY": "Uruguay",

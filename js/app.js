@@ -1,9 +1,7 @@
-import { IPdata, Positionstack, Openmeteo, Worldtime } from "./apicalls.js";
+import { IPdata, Positionstack, Geocode, Openmeteo, Worldtime } from "./apicalls.js";
 import { Utilities } from "./utilities.js";
 import { UI } from "./ui.js";
 import { countryList } from "./country_list.js";
-
-console.log(countryList.RU)
 
 loadEvents();
 
@@ -22,6 +20,7 @@ function loadEvents() {
 function loadWeather() {
   const ipinfo = new IPdata,
         position = new Positionstack,
+        geocode = new Geocode,
         weather = new Openmeteo,
         utl = new Utilities,
         ui = new UI,
