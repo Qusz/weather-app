@@ -1,0 +1,138 @@
+img {
+  max-width: 100%;
+}
+
+
+
+body {
+  background: #56CCF2;  /* fallback  */
+  background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2); 
+  background: linear-gradient(to right, #2F80ED, #56CCF2); 
+}
+
+
+
+
+/* 
+===============
+Main Card
+===============
+ */
+
+ .card-inner-wrapper {
+  justify-content: space-between;
+}
+
+
+
+ /* ===========
+ Left Side
+ ============ */
+
+ .main-card__left {
+  flex-direction: column;
+  width: 35%;
+  border-right: 1px solid #fff;
+  padding-right: 2rem;
+}
+
+.now-icon {
+  justify-content: space-between;
+}
+
+.weather-icon {
+  width: 100px;
+}
+
+
+.weather-now__temperature {
+  align-self: center;
+}
+
+.weather-now {
+ justify-content: space-between;
+ font-size: 1.8em;
+ font-weight: 700;
+}
+
+.weather-now__status {
+  align-self: center;
+}
+
+.weather-now__details {
+  font-size: 1.5em;
+}
+
+
+.weather-now__badge {
+  background-color: #ED9B31;
+  font-size: .7em;
+}
+
+
+ /* ===========
+ Right side
+ =========== */
+
+.main-card__right {
+  width: 63%;
+}
+
+
+.today-times {
+  font-size: 2.2em;
+  font-weight: 500;
+}
+
+.today-temps {
+  font-size: 1.8em;
+  font-weight: 500;
+}
+
+
+/* 
+===========
+Modal
+===========
+ */
+
+.modal-button {
+  display: block;
+  width: 17rem;
+}
+
+
+.btn-modal {
+  background-color: #ED9B31;
+  border: none !important;
+}
+
+.btn-modal:focus {
+  background-color: #ED9B31 !important;
+}
+
+.btn-modal:hover {
+  background-color: #d58c2c !important;
+}
+
+.btn-modal {
+  font-weight: 700;
+}
+
+.modal-save-button {
+  background-color: #ED9B31 !important;
+  border: none !important;
+  width: 50%;
+}
+
+.modal-save-button:hover,
+.modal-save-button:focus {
+  border: none !important;
+  background-color: #d58c2c !important;
+}
+
+.change-location-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
