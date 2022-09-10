@@ -2,14 +2,13 @@ img {
   max-width: 100%;
 }
 
-
-
 body {
   background: #56CCF2;  /* fallback  */
   background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2); 
   background: linear-gradient(to right, #2F80ED, #56CCF2); 
+  background-attachment: fixed;
+  color: #fff;
 }
-
 
 
 
@@ -17,23 +16,34 @@ body {
 ===============
 Main Card
 ===============
- */
+*/
 
- .card-inner-wrapper {
+.main-card {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.38);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.8px);
+-webkit-backdrop-filter: blur(6.8px);
+}
+
+.card-inner-wrapper {
   justify-content: space-between;
 }
 
 
 
- /* ===========
- Left Side
- ============ */
+/* 
+==============
+Left Side
+==============
+*/
 
- .main-card__left {
+.main-card__left {
   flex-direction: column;
   width: 35%;
   border-right: 1px solid #fff;
-  padding-right: 2rem;
+  padding-inline: 1rem;
 }
 
 .now-icon {
@@ -44,14 +54,13 @@ Main Card
   width: 100px;
 }
 
-
 .weather-now__temperature {
   align-self: center;
 }
 
 .weather-now {
  justify-content: space-between;
- font-size: 1.8em;
+ font-size: 1.6em;
  font-weight: 700;
 }
 
@@ -61,23 +70,28 @@ Main Card
 
 .weather-now__details {
   font-size: 1.5em;
-}
+  font-weight: 500;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .weather-now__badge {
   background-color: #ED9B31;
-  font-size: .7em;
+  font-size: .65em;
 }
 
 
- /* ===========
- Right side
- =========== */
+/* 
+==============
+Right side
+=============
+*/
 
 .main-card__right {
   width: 63%;
 }
-
 
 .today-times {
   font-size: 2.2em;
@@ -94,17 +108,32 @@ Main Card
 ===========
 Modal
 ===========
- */
+*/
 
-.modal-button {
-  display: block;
-  width: 17rem;
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.38);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.8px);
+  -webkit-backdrop-filter: blur(6.8px);
 }
 
+.form-control {
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.8px);
+  -webkit-backdrop-filter: blur(6.8px);
+}
 
 .btn-modal {
   background-color: #ED9B31;
+  color: #fff;
+  font-weight: 700;
   border: none !important;
+  display: block;
+  width: 13rem;
+  padding-block: 1rem;
 }
 
 .btn-modal:focus {
@@ -113,10 +142,6 @@ Modal
 
 .btn-modal:hover {
   background-color: #d58c2c !important;
-}
-
-.btn-modal {
-  font-weight: 700;
 }
 
 .modal-save-button {
