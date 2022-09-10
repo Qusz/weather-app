@@ -1,6 +1,9 @@
 import { IPdata, Positionstack, Openmeteo, Worldtime } from "./apicalls.js";
 import { Utilities } from "./utilities.js";
 import { UI } from "./ui.js";
+import { countryList } from "./country_list.js";
+
+console.log(countryList.RU)
 
 loadEvents();
 
