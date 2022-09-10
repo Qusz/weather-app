@@ -13,7 +13,7 @@
   <main class="main">
 
     <div class="container main-container">
-      <div class="card main-card mt-5 py-5 px-3">
+      <div class="card main-card mt-5 py-4 px-3 mx-auto">
         <div class="card-body">
           <h1 class="current-location card-title text-center"></h1>
           <h4 class="current-time text-center"></h4>
@@ -26,7 +26,7 @@
                 <div class="weather-now__temperature"></div>
                 <object data="" type="image/svg+xml" class="weather-icon weather-icon--now"></object>
               </div>    
-              <div class="weather-now__details">
+              <div class="weather-now__details d-flex">
                 <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
                   Feels like
                   <span class="badge weather-now__badge rounded-pill feelslike"></span>
@@ -56,30 +56,36 @@
 
             <div class="main-card__right">
               <h1 class="weather-today__title mt-3 text-center">The Weather Today</h1>
-              <div class="row today-times mt-4 text-center">
-                <div class="col col-3 today-time">6:00</div>
-                <div class="col col-3 today-time">12:00</div>
-                <div class="col col-3 today-time">18:00</div>
-                <div class="col col-3 today-time">22:00</div>
+
+              <div class="weather-today-wrapper d-flex">
+                <div class="d-flex today-times">
+                  <div class=" today-time">6:00</div>
+                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--600  my-3"></object>
+                  <div class="today_temp__600"></div>
+                </div>
+                <div class="d-flex today-times">
+                  <div class="today-time">12:00</div>
+                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--1200  my-3"></object>
+                  <div class="today_temp__1200"></div>
+                </div>
+                <div class="d-flex today-times">
+                  <div class="today-time">18:00</div>
+                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--1800 my-3"></object>
+                  <div class=" today_temp__1800"></div>
+                </div>
+                <div class="d-flex today-times">
+                  <div class=" today-time">22:00</div>
+                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--2200  my-3"></object>
+                  <div class="today_temp__2200"></div>
+                </div>
               </div>
-              <div class="row today-icons text-center">
-                <object data="" type="image/svg+xml" class="weather-icon weather-icon--600 col my-3"></object>
-                <object data="" type="image/svg+xml" class="weather-icon weather-icon--1200 col my-3"></object>
-                <object data="" type="image/svg+xml" class="weather-icon weather-icon--1800 col my-3"></object>
-                <object data="" type="image/svg+xml" class="weather-icon weather-icon--2200 col my-3"></object>
-              </div>
-              <div class="row today-temps text-center">
-                <div class="col col-3 today_temp__600"></div>
-                <div class="col col-3 today_temp__1200"></div>
-                <div class="col col-3 today_temp__1800"></div>
-                <div class="col col-3 today_temp__2200"></div>
-              </div>
+
             </div>
           </div>
       </div>
     </div> 
 
-    <button type="button" class="btn btn-modal mt-3 mx-auto" data-bs-toggle="modal" data-bs-target="#change-location-modal">
+    <button type="button" class="btn btn-modal my-3 mx-auto" data-bs-toggle="modal" data-bs-target="#change-location-modal">
       Change Location
     </button>
     <div class="modal fade" id="change-location-modal" tabindex="-1">

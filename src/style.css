@@ -1,3 +1,12 @@
+:root {
+  --fs-xl: 2.2em;
+  --fs-l: 1.3em;
+
+  --clr-accent: #ED9B31;
+  --clr-accent--hover: #d58c2c;
+}
+
+
 img {
   max-width: 100%;
 }
@@ -11,7 +20,6 @@ body {
 }
 
 
-
 /* 
 ===============
 Main Card
@@ -19,12 +27,14 @@ Main Card
 */
 
 .main-card {
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.38);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.8px);
--webkit-backdrop-filter: blur(6.8px);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.38);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.8px);
+  -webkit-backdrop-filter: blur(6.8px);
+
+  max-width: 1024px;
 }
 
 .card-inner-wrapper {
@@ -40,14 +50,9 @@ Left Side
 */
 
 .main-card__left {
-  flex-direction: column;
   width: 35%;
   border-right: 1px solid #fff;
-  padding-inline: 1rem;
-}
-
-.now-icon {
-  justify-content: space-between;
+  padding-right: 1rem;
 }
 
 .weather-icon {
@@ -58,9 +63,13 @@ Left Side
   align-self: center;
 }
 
+.inner-title {
+  font-size: var(--fs-xl);
+}
+
 .weather-now {
  justify-content: space-between;
- font-size: 1.6em;
+ font-size: var(--fs-l);
  font-weight: 700;
 }
 
@@ -69,16 +78,18 @@ Left Side
 }
 
 .weather-now__details {
-  font-size: 1.5em;
+  font-size: var(--fs-l);
   font-weight: 500;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  margin-top: 1rem;
 }
 
 .weather-now__badge {
-  background-color: #ED9B31;
+  background-color: var(--clr-accent);
   font-size: .65em;
 }
 
@@ -89,19 +100,33 @@ Right side
 =============
 */
 
+.weather-today__title {
+  font-size: var(--fs-xl);
+}
+
 .main-card__right {
   width: 63%;
 }
 
-.today-times {
-  font-size: 2.2em;
-  font-weight: 500;
+.weather-today-wrapper {
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 2rem;
+  font-size: 1.5em;
 }
 
-.today-temps {
-  font-size: 1.8em;
+.today-times {
+  font-size: var(--fs-l);
   font-weight: 500;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 
 /* 
@@ -127,7 +152,7 @@ Modal
 }
 
 .btn-modal {
-  background-color: #ED9B31;
+  background-color: var(--clr-accent);
   color: #fff;
   font-weight: 700;
   border: none !important;
@@ -136,16 +161,14 @@ Modal
   padding-block: 1rem;
 }
 
-.btn-modal:focus {
-  background-color: #ED9B31 !important;
-}
-
+.btn-modal:focus,
 .btn-modal:hover {
-  background-color: #d58c2c !important;
+  background-color: var(--clr-accent--hover) !important;
 }
 
 .modal-save-button {
-  background-color: #ED9B31 !important;
+  background-color: var(--clr-accent) !important;
+  color: #fff !important;
   border: none !important;
   width: 50%;
 }
@@ -153,11 +176,95 @@ Modal
 .modal-save-button:hover,
 .modal-save-button:focus {
   border: none !important;
-  background-color: #d58c2c !important;
+  background-color: var(--clr-accent--hover) !important;
 }
 
 .change-location-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+/* 
+==================
+Responsive Layout
+===================
+ */
+
+
+/* Tablets */
+
+@media only screen and (max-width: 1024px) {
+
+  .current-time {
+    margin-bottom: 1rem;
+  }
+
+  .card-inner-wrapper {
+    flex-direction: column;
+    margin-top: .5rem !important;
+  }
+  
+  .inner-title {
+    border-top: 1px solid #fff;
+    padding-top: 1rem;
+  }
+  
+  .current-time {
+    margin-top: 1rem !important;
+  }
+  
+  .main-card__left {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    border: none;
+    padding: 0;
+  }
+
+  .weather-now__details {
+    margin-bottom: 1rem;
+  }
+  
+  
+  .main-card__right {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .weather-today__title {
+    border-top: 1px solid #fff;
+    padding-top: 2rem;
+  }
+  
+  .weather-today-wrapper {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .today-times {
+    padding: .5rem 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+  
+  .today-times:nth-child(-n+2) {
+    margin-bottom: 1rem;
+  }
+  
+}
+
+/* Phones */
+
+@media only screen and (max-width : 768px) {
+
+  .weather-today-wrapper {
+    flex-direction: column;
+  }
+
+  .today-times:not(:first-child) {
+    margin-bottom: 1rem;
+  }
 }
