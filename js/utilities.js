@@ -38,14 +38,14 @@ export class Utilities {
       throw Error('No location saved in local storage');
     } else {
       const city = localStorage.getItem('city');
-      const country = localStorage.getItem('city');
+      const country = localStorage.getItem('country');
       return {city, country};
     }
   }
 
-  saveLocation(newCity, newCountry) {
-    localStorage.setItem('city', newCity);
-    localStorage.setItem('country', newCountry);
+  saveLocation(city, countryCode) {
+    localStorage.setItem('city', city);
+    localStorage.setItem('country', countryCode);
   }
   
   weatherStatus(code) {

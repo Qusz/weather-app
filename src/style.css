@@ -151,10 +151,6 @@ Modal
   -webkit-backdrop-filter: blur(6.8px);
 }
 
-.option-country {
-  color: #000;
-}
-
 .btn-modal {
   background-color: var(--clr-accent);
   color: #fff;

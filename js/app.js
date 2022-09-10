@@ -1,14 +1,15 @@
-import { IPdata, Positionstack, Geocode, Openmeteo, Worldtime } from "./apicalls.js";
+import { IPdata, Geocode, Openmeteo, Worldtime } from "./apicalls.js";
 import { Utilities } from "./utilities.js";
 import { UI } from "./ui.js";
-import { countryList } from "./country_list.js";
 
 loadEvents();
 
 function loadEvents() {
+  const utl = new Utilities,
+        ui = new UI;
+  ui.chooseCountry();
   document.addEventListener('DOMContentLoaded', loadWeather);
   document.querySelector('.modal-save-button').addEventListener('click', () => {
-    const utl = new Utilities;
     const city = document.querySelector('.form-city').value,
           country = document.querySelector('.form-country').value;
     utl.saveLocation(city, country);
@@ -19,16 +20,16 @@ function loadEvents() {
 
 function loadWeather() {
   const ipinfo = new IPdata,
-        position = new Positionstack,
         geocode = new Geocode,
         weather = new Openmeteo,
         utl = new Utilities,
         ui = new UI,
         worldtime = new Worldtime;
 
+
   //* If no data in local storage, get location from IP address. Otherwise get data from local storage
   const checkLocalStorage = utl.localStorageExists();
-  ui.chooseCountry();
+  
 
   try {
     if (checkLocalStorage === false) {
@@ -49,11 +50,11 @@ function loadWeather() {
 
     } else {
       const savedLocation = utl.getSavedLocation();
-      position.geoForward(savedLocation.city)
-        .then(data => {
-          ui.showLocation(data.data[0].locality, data.data[0].country);
-          
-          weather.getWeather(data.data[0].latitude, data.data[0].longitude)
+
+      geocode.geoForward(savedLocation.city, savedLocation.country)
+        .then (data => {
+          ui.showLocation(data.standard.city, data.standard.countryname);
+          weather.getWeather(data.latt, data.longt)
             .then(data => {
               ui.showWeatherNow(data);
               ui.showWeatherToday(data);

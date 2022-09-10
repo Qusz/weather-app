@@ -26,27 +26,6 @@ export class Geocode {
   }
 }
 
-
-//* Positionstack API
-export class Positionstack {
-  constructor() {
-    this.APIkey = API_KEYS.positionstack;
-  }
-
-  async geoReverse(lat, lng) {
-    const request = await fetch(`http://api.positionstack.com/v1/reverse?access_key=${this.APIkey}&query=${lat},${lng}`);
-    const response = await request.json();
-    return response;
-  }
-
-  async geoForward(city) {
-    const request = await fetch(`http://api.positionstack.com/v1/forward?access_key=${this.APIkey}&query=${city}`);
-    const response = await request.json();
-    return response;
-  }
-
-}
-
 //* Openmeteo API
 export class Openmeteo {
   async getWeather(lat, lng) {
