@@ -72,6 +72,8 @@ export class UI {
   }
 
   showWeatherToday(response) {
+
+    //* Index is hard-coded to match the displayed static timestamps
     const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
           weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
           weatherStatus1800 = this.utl.weatherStatus(response.hourly.weathercode[18]),
