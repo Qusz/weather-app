@@ -28,6 +28,7 @@ function loadWeather() {
 
   //* If no data in local storage, get location from IP address. Otherwise get data from local storage
   const checkLocalStorage = utl.localStorageExists();
+  ui.chooseCountry();
 
   try {
     if (checkLocalStorage === false) {
