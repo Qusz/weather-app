@@ -88,7 +88,6 @@
 
 
     <button type="button" class="btn btn-modal my-3 mx-auto" data-bs-toggle="modal" data-bs-target="#change-location-modal">
-
       Change Location
     </button>
     <div class="modal fade" id="change-location-modal" tabindex="-1">
@@ -101,10 +100,11 @@
           <div class="modal-body">
             <form action="submit" class="change-location-form">
               <div class="input-group mb-3">
-                <input type="text" class="form-control form-city" placeholder="Change city">
+                <input type="text" class="form-control form-city" placeholder="Enter a city">
               </div>
               <div class="input-group mb-3">
-                <input type="text" class="form-control form-country" placeholder="Change country">
+                <select class="form-select form-country">
+                </select>
               </div>
               <button type="button" class="btn modal-save-button">Save</button>
             </form>

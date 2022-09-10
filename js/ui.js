@@ -1,4 +1,5 @@
 import { Utilities } from "./utilities.js";
+import { countryList } from "./country_list.js";
 
 export class UI {
   constructor(){
@@ -25,6 +26,8 @@ export class UI {
     this.icon1200 = document.querySelector('.weather-icon--1200');
     this.icon1800 = document.querySelector('.weather-icon--1800');
     this.icon2200 = document.querySelector('.weather-icon--2200');
+
+    this.country = document.querySelector('.form-country');
   }
 
   showTime(time, timezone) {
@@ -85,6 +88,16 @@ export class UI {
     this.icon1200.data = `${this.utl.pickIcon(weatherStatus1200)}`;
     this.icon1800.data = `${this.utl.pickIcon(weatherStatus1800)}`;
     this.icon2200.data = `${this.utl.pickIcon(weatherStatus2200)}`;
+  }
+
+  chooseCountry() {
+    for (const property in countryList) {
+      const option = document.createElement('option');
+      option.className = 'option-country';
+      option.value = `${property}`;
+      option.textContent = `${countryList[property]}`;
+      this.country.appendChild(option);
+    }
   }
   
   showAlert(message, className, parentElementClass, nextElementClass) {
