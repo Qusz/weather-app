@@ -4,16 +4,6 @@ import { UI } from "./ui.js";
 
 loadEvents();
 
-// const geo = new Nominatim;
-
-// geo.geoForward('London', 'Canada')
-//   .then (data => console.log(data));
-
-// const ip = new GeoJS;
-
-// ip.getIP()
-//   .then (data => console.log(data))
-
 function loadEvents() {
   const utl = new Utilities,
         ui = new UI;
