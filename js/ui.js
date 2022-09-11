@@ -103,6 +103,8 @@ export class UI {
   }
   
   showAlert(message, className, parentElementClass, nextElementClass) {
+    //* First clear previous alert if there's one
+    this.clearAlert();
     const alert  = document.createElement('div'),
           parent = document.querySelector(parentElementClass),
           nextElement = document.querySelector(nextElementClass);
@@ -110,11 +112,14 @@ export class UI {
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
     parent.insertBefore(alert, nextElement);
-    setTimeout(this.clearAlert, 3000);
+    setTimeout(this.clearAlert, 5000);
     
   }
 
   clearAlert() {
-    document.querySelector('.alert').remove();
+    const alert = document.querySelector('.alert');
+    if (alert) {
+      alert.remove();
+    }
   }
 }

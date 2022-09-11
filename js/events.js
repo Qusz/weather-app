@@ -4,18 +4,25 @@ import { UI } from "./ui.js";
 
 export function loadEvents() {
   const utl = new Utilities,
-        ui = new UI;
+        ui = new UI,
+        geocode = new Nominatim;
+
   ui.chooseCountry();
+
   document.addEventListener('DOMContentLoaded', loadWeather);
   document.querySelector('.modal-save-button').addEventListener('click', () => {
     const city = document.querySelector('.form-city').value,
           country = document.querySelector('.form-country').value;
-    const newLocation = utl.saveLocation(city, country);
 
-    //* Check if input is correct before sending API requests
-    if (newLocation === true) {
-      loadWeather();
-    } 
+    geocode.geoForward(city, country)
+      .then (data => {
+        geocode.handleErrors(data);
+        utl.saveLocation(city, country);
+        loadWeather();
+      })
+      .catch (error => {
+        ui.showAlert(error.message, 'alert alert-danger text-center', '.modal-body', '.change-location-form');
+      })
   })
 }
 
@@ -54,6 +61,7 @@ export function loadWeather() {
 
       geocode.geoForward(savedLocation.city, savedLocation.country)
         .then (data => {
+          geocode.handleErrors(data);
           ui.showLocation(data[0].address.city, data[0].address.country);
           weather.getWeather(data[0].lat, data[0].lon)
             .then(data => {
@@ -66,8 +74,11 @@ export function loadWeather() {
                 })
             })
         })
+        .catch (error => {
+          ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
+        })
     }
-  } catch(err) {
-    console.log(err.message);
+  } catch(error) {
+    ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
   }
 }

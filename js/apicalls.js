@@ -14,6 +14,17 @@ export class Nominatim {
     const response = await request.json();
     return response;
   }
+
+  handleErrors(response) {
+    switch(true) {
+      case (response.length === 0):
+        throw new Error("Can't find this location. Please try again.");
+      case (!response[0].address.city):
+        throw new Error("Please provide a city");
+    }
+  }
+
+ 
 }
 
 //* Openmeteo API
