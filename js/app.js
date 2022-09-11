@@ -1,8 +1,18 @@
-import { IPdata, Geocode, Openmeteo, Worldtime } from "./apicalls.js";
+import { GeoJS, Nominatim, Openmeteo, Worldtime } from "./apicalls.js";
 import { Utilities } from "./utilities.js";
 import { UI } from "./ui.js";
 
 loadEvents();
+
+// const geo = new Nominatim;
+
+// geo.geoForward('London', 'Canada')
+//   .then (data => console.log(data));
+
+// const ip = new GeoJS;
+
+// ip.getIP()
+//   .then (data => console.log(data))
 
 function loadEvents() {
   const utl = new Utilities,
@@ -18,8 +28,8 @@ function loadEvents() {
 }
 
 function loadWeather() {
-  const ipinfo = new IPdata,
-        geocode = new Geocode,
+  const ipinfo = new GeoJS,
+        geocode = new Nominatim,
         weather = new Openmeteo,
         utl = new Utilities,
         ui = new UI,
@@ -34,8 +44,8 @@ function loadWeather() {
     if (checkLocalStorage === false) {
       ipinfo.getIP()
       .then(data => {
-        ui.showLocation(data.city, data.country_name);
-        worldtime.getTime(data.time_zone.name)
+        ui.showLocation(data.city, data.country);
+        worldtime.getTime(data.timezone)
           .then(data => {
             ui.showTime(data.datetime, data.timezone);
           })
@@ -52,9 +62,8 @@ function loadWeather() {
 
       geocode.geoForward(savedLocation.city, savedLocation.country)
         .then (data => {
-          console.log(data);
-          ui.showLocation(data.standard.city, data.standard.countryname);
-          weather.getWeather(data.latt, data.longt)
+          ui.showLocation(data[0].address.city, data[0].address.country);
+          weather.getWeather(data[0].lat, data[0].lon)
             .then(data => {
               ui.showWeatherNow(data);
               ui.showWeatherToday(data);

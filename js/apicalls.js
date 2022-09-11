@@ -1,32 +1,19 @@
-import { API_KEYS } from "./api_keys.js";
-
-//* ipdata API
-export class IPdata {
-  constructor() {
-    this.APIkey = API_KEYS.ipdata;
-  }
-
+//* GeoJS
+export class GeoJS {
   async getIP() {
-    const ipResponse = await fetch(`https://api.ipdata.co?api-key=${this.APIkey}`);
-    const ipData = await ipResponse.json();
-    return ipData;
-  }
-}
-
-//* Geocode
-export class Geocode {
-  constructor() {
-    this.APIkey = API_KEYS.geocode;
-  }
-
-  async geoForward(city, countryCode) {
-    const request = await fetch(`https://geocode.xyz/?locate=${city}&region=${countryCode}&json=1&auth=${this.APIkey}`);
+    const request = await fetch(`https://get.geojs.io/v1/ip/geo.json`);
     const response = await request.json();
     return response;
   }
+}
 
-
-
+//* Nominatim
+export class Nominatim {
+  async geoForward(city, country) {
+    const request = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&country=${country}&format=json&addressdetails=1&limit=1`);
+    const response = await request.json();
+    return response;
+  }
 }
 
 //* Openmeteo API
