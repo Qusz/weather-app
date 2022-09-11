@@ -246,13 +246,13 @@ Responsive Layout
   }
   
   .today-times {
-    padding: .5rem 3rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: .5rem 7rem;
+    border: 2px solid #fff;
     border-radius: 10px;
   }
   
-  .today-times:nth-child(-n+2) {
-    margin-bottom: 1rem;
+  .today-times:not(:first-child) {
+    margin-top: 1rem;
   }
   
 }
@@ -263,6 +263,10 @@ Responsive Layout
 
   .weather-today-wrapper {
     flex-direction: column;
+  }
+
+  .today-times {
+    padding: .5rem 3rem;
   }
 
   .today-times:not(:first-child) {
