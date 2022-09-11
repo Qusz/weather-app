@@ -14,7 +14,6 @@ function loadEvents() {
           country = document.querySelector('.form-country').value;
     utl.saveLocation(city, country);
     loadWeather();
-    $('#change-location-modal').modal('hide');
   })
 }
 

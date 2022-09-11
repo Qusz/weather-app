@@ -2,7 +2,7 @@ import { Utilities } from "./utilities.js";
 import { countryList } from "./country_list.js";
 
 export class UI {
-  constructor(){
+  constructor() {
     this.utl = new Utilities;
 
     this.currentTime = document.querySelector('.current-time');
@@ -110,12 +110,11 @@ export class UI {
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
     parent.insertBefore(alert, nextElement);
+    setTimeout(this.clearAlert, 3000);
+    
   }
 
   clearAlert() {
-    const activeAlert = document.querySelector('.alert');
-    if(activeAlert){
-      activeAlert.remove();
-    }
+    document.querySelector('.alert').remove();
   }
 }
