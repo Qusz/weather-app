@@ -10,8 +10,12 @@ export function loadEvents() {
   document.querySelector('.modal-save-button').addEventListener('click', () => {
     const city = document.querySelector('.form-city').value,
           country = document.querySelector('.form-country').value;
-    utl.saveLocation(city, country);
-    loadWeather();
+    const newLocation = utl.saveLocation(city, country);
+
+    //* Check if input is correct before sending API requests
+    if (newLocation === true) {
+      loadWeather();
+    } 
   })
 }
 

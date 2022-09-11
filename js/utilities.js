@@ -50,10 +50,12 @@ export class Utilities {
 
     if (city === '' || country === '') {
       ui.showAlert('Input can\'t be empty', 'alert alert-danger text-center', '.modal-body', '.change-location-form');
+      return false;
     } else {
       localStorage.setItem('city', city);
       localStorage.setItem('country', country);
       $('#change-location-modal').modal('hide');
+      return true;
     }
 
   }
