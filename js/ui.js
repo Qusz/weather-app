@@ -72,7 +72,6 @@ export class UI {
   }
 
   showWeatherToday(response) {
-
     //* Index is hard-coded to match the displayed static timestamps
     const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
           weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
@@ -111,9 +110,7 @@ export class UI {
 
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
-    parent.insertBefore(alert, nextElement);
-    // setTimeout(this.clearAlert, 5000);
-    
+    parent.insertBefore(alert, nextElement);    
   }
 
   clearAlert() {
