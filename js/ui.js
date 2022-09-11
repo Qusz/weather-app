@@ -103,7 +103,7 @@ export class UI {
   }
   
   showAlert(message, className, parentElementClass, nextElementClass) {
-    //* First clear previous alert if there's one
+    //* Clear previous alert if there's one
     this.clearAlert();
     const alert  = document.createElement('div'),
           parent = document.querySelector(parentElementClass),
@@ -112,7 +112,7 @@ export class UI {
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
     parent.insertBefore(alert, nextElement);
-    setTimeout(this.clearAlert, 5000);
+    // setTimeout(this.clearAlert, 5000);
     
   }
 
