@@ -22,8 +22,6 @@ export class Nominatim {
         throw new Error("Please provide a city");
     }
   }
-
- 
 }
 
 export class Openmeteo {
@@ -31,6 +29,13 @@ export class Openmeteo {
     const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}1&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,pressure_msl,windspeed_10m&daily=weathercode,sunrise,sunset&current_weather=true&timezone=auto`);
     const response = await request.json();
     return response;
+  }
+
+  handleErrors(response) {
+    switch(true) {
+      case (response.error):
+        throw new Error('Can\t load the weather at the moment. Try again later');
+    }
   }
 }
 

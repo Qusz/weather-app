@@ -18,12 +18,13 @@ export function loadEvents() {
       .then (data => {
         geocode.handleErrors(data);
         utl.saveLocation(city, country);
+        ui.clearAlert();
         loadWeather();
       })
       .catch (error => {
         ui.showAlert(error.message, 'alert alert-danger text-center', '.modal-body', '.change-location-form');
-      })
-  })
+      });
+  });
 }
 
 export function loadWeather() {
@@ -47,13 +48,20 @@ export function loadWeather() {
         worldtime.getTime(data.timezone)
           .then(data => {
             ui.showTime(data.datetime, data.timezone);
-          })
+          });
    
         weather.getWeather(data.latitude, data.longitude)
           .then(data => {
+            weather.handleErrors(data);
             ui.showWeatherNow(data);
             ui.showWeatherToday(data);
           })
+          .catch(error => {
+            ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
+          });
+      })
+      .catch(error => {
+        ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
       });
 
     } else {
@@ -71,12 +79,15 @@ export function loadWeather() {
               worldtime.getTime(data.timezone)
                 .then(data => {
                   ui.showTime(data.datetime, data.timezone);
-                })
+                });
             })
+            .catch(error => {
+              ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
+            });
         })
         .catch (error => {
           ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
-        })
+        });
     }
   } catch(error) {
     ui.showAlert(error.message, 'alert alert-danger text-center', '.card-body', '.current-location');
