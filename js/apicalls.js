@@ -24,6 +24,9 @@ export class Geocode {
     const response = await request.json();
     return response;
   }
+
+
+
 }
 
 //* Openmeteo API

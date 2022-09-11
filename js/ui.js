@@ -2,7 +2,7 @@ import { Utilities } from "./utilities.js";
 import { countryList } from "./country_list.js";
 
 export class UI {
-  constructor(){
+  constructor() {
     this.utl = new Utilities;
 
     this.currentTime = document.querySelector('.current-time');
@@ -72,6 +72,8 @@ export class UI {
   }
 
   showWeatherToday(response) {
+
+    //* Index is hard-coded to match the displayed static timestamps
     const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
           weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
           weatherStatus1800 = this.utl.weatherStatus(response.hourly.weathercode[18]),
@@ -108,12 +110,11 @@ export class UI {
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
     parent.insertBefore(alert, nextElement);
+    setTimeout(this.clearAlert, 3000);
+    
   }
 
   clearAlert() {
-    const activeAlert = document.querySelector('.alert');
-    if(activeAlert){
-      activeAlert.remove();
-    }
+    document.querySelector('.alert').remove();
   }
 }

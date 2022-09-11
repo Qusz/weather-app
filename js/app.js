@@ -14,7 +14,6 @@ function loadEvents() {
           country = document.querySelector('.form-country').value;
     utl.saveLocation(city, country);
     loadWeather();
-    $('#change-location-modal').modal('hide');
   })
 }
 
@@ -53,6 +52,7 @@ function loadWeather() {
 
       geocode.geoForward(savedLocation.city, savedLocation.country)
         .then (data => {
+          console.log(data);
           ui.showLocation(data.standard.city, data.standard.countryname);
           weather.getWeather(data.latt, data.longt)
             .then(data => {

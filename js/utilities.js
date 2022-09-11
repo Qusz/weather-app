@@ -1,3 +1,5 @@
+import { UI } from "./ui.js";
+
 export class Utilities {
   currentTime(time, timezone) {
     const date = Date.parse(time);
@@ -44,8 +46,16 @@ export class Utilities {
   }
 
   saveLocation(city, countryCode) {
-    localStorage.setItem('city', city);
-    localStorage.setItem('country', countryCode);
+    const ui = new UI;
+
+    if (city === '' || countryCode === '') {
+      ui.showAlert('Input can\'t be empty', 'alert alert-danger text-center', '.modal-body', '.change-location-form');
+    } else {
+      localStorage.setItem('city', city);
+      localStorage.setItem('country', countryCode);
+      $('#change-location-modal').modal('hide');
+    }
+
   }
   
   weatherStatus(code) {
