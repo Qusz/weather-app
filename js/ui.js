@@ -72,7 +72,6 @@ export class UI {
   }
 
   showWeatherToday(response) {
-
     //* Index is hard-coded to match the displayed static timestamps
     const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
           weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
@@ -103,18 +102,21 @@ export class UI {
   }
   
   showAlert(message, className, parentElementClass, nextElementClass) {
+    //* Clear previous alert if there's one
+    this.clearAlert();
     const alert  = document.createElement('div'),
           parent = document.querySelector(parentElementClass),
           nextElement = document.querySelector(nextElementClass);
 
     alert.className = className;
     alert.appendChild(document.createTextNode(message));
-    parent.insertBefore(alert, nextElement);
-    setTimeout(this.clearAlert, 3000);
-    
+    parent.insertBefore(alert, nextElement);    
   }
 
   clearAlert() {
-    document.querySelector('.alert').remove();
+    const alert = document.querySelector('.alert');
+    if (alert) {
+      alert.remove();
+    }
   }
 }

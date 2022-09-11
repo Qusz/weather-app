@@ -46,16 +46,9 @@ export class Utilities {
   }
 
   saveLocation(city, country) {
-    const ui = new UI;
-
-    if (city === '' || country === '') {
-      ui.showAlert('Input can\'t be empty', 'alert alert-danger text-center', '.modal-body', '.change-location-form');
-    } else {
-      localStorage.setItem('city', city);
-      localStorage.setItem('country', country);
-      $('#change-location-modal').modal('hide');
-    }
-
+    localStorage.setItem('city', city);
+    localStorage.setItem('country', country);
+    $('#change-location-modal').modal('hide');
   }
   
   weatherStatus(code) {
