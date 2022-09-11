@@ -96,7 +96,7 @@ export class UI {
     for (const property in countryList) {
       const option = document.createElement('option');
       option.className = 'option-country';
-      option.value = `${property}`;
+      option.value = `${countryList[property]}`;
       option.textContent = `${countryList[property]}`;
       this.country.appendChild(option);
     }
