@@ -72,7 +72,7 @@ export class UI {
   }
 
   showWeatherToday(response) {
-    //* Index is hard-coded to match the displayed static timestamps
+    //* Index is hard-coded to match the displayed static timestamps (600, 1200, 1800, 2200)
     const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
           weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
           weatherStatus1800 = this.utl.weatherStatus(response.hourly.weathercode[18]),
@@ -84,7 +84,6 @@ export class UI {
     this.twentytwo.textContent = `${response.hourly.temperature_2m[22]} °C`;
 
     //* Show icons
-
     this.icon600.data = `${this.utl.pickIcon(weatherStatus600)}`;
     this.icon1200.data = `${this.utl.pickIcon(weatherStatus1200)}`;
     this.icon1800.data = `${this.utl.pickIcon(weatherStatus1800)}`;
@@ -102,7 +101,7 @@ export class UI {
   }
   
   showAlert(message, className, parentElementClass, nextElementClass) {
-    //* Clear previous alert if there's one
+    //* First clear previous alert if there's one
     this.clearAlert();
     const alert  = document.createElement('div'),
           parent = document.querySelector(parentElementClass),

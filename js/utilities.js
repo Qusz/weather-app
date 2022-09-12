@@ -1,5 +1,3 @@
-import { UI } from "./ui.js";
-
 export class Utilities {
   currentTime(time, timezone) {
     const date = Date.parse(time);
@@ -37,7 +35,7 @@ export class Utilities {
 
   getSavedLocation() {
     if (localStorage.getItem('city') === null && localStorage.getItem('country') === null) {
-      throw Error('No location saved in local storage');
+      throw new Error('No location saved in local storage');
     } else {
       const city = localStorage.getItem('city');
       const country = localStorage.getItem('country');
