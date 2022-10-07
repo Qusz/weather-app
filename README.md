@@ -24,3 +24,5 @@ None of these API require authentication.
   - User input is validated through the geocoding API
   - Chosen location is stored in the local storage
   
+## Attribution
+Animated weather icons by https://www.amcharts.com/free-animated-svg-weather-icons/ 
