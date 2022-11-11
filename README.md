@@ -25,9 +25,9 @@ None of these API require authentication.
   - Chosen location is stored in the local storage
 
 # Usage
-Clone the repo
-Run `$ npm install`
-Run `$ npm start`
+- Clone the repo
+- Run ```$ npm install```
+- Run ```$ npm start```
   
 # Attribution
 Animated weather icons by https://www.amcharts.com/free-animated-svg-weather-icons/ 
