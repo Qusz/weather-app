@@ -1,0 +1,18 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A simple weather web application build with Bootstrap and vanilla JavaScript.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qusz/weather-app.git"
+  },
+  "author": "Qusz",
+  "license": "ISC",
+  "scripts": {
+    "start": "serve ./"
+  },
+  "devDependencies": {
+    "serve": "^14.1.1"
+  }
+}
