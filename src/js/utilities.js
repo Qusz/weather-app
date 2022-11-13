@@ -135,23 +135,23 @@ export class Utilities {
     switch(weatherStatus) {
       case 'Clear sky':
       case 'Mainly clear':
-        return '../assets/img/weather_icons/animated/clear-day.svg';
+        return './assets/img/weather_icons/animated/clear-day.svg';
       case 'Partly cloudy':
-        return '../assets/img/weather_icons/animated/partly-cloudy-day.svg';
+        return './assets/img/weather_icons/animated/partly-cloudy-day.svg';
       case 'Overcast':
-        return '../assets/img/weather_icons/animated/overcast-day.svg';
+        return './assets/img/weather_icons/animated/overcast-day.svg';
       case 'Fog':
-        return '../assets/img/weather_icons/animated/fog.svg';
+        return './assets/img/weather_icons/animated/fog.svg';
       case 'Drizzle':
         return './img/weather_icons/animated/drizzle.svg';
       case 'Rain':
       case 'Showers':
-        return '../assets/img/weather_icons/animated/rain.svg';
+        return './assets/img/weather_icons/animated/rain.svg';
       case 'Freezing rain':
-        return '../assets/img/weather_icons/animated/sleet.svg';
+        return './assets/img/weather_icons/animated/sleet.svg';
       case 'Snowfall':
       case 'Snow showers':
-        return '../assets/img/weather_icons/animated/snow.svg';
+        return './assets/img/weather_icons/animated/snow.svg';
       default:
         return ('ERROR: Can\'t load weather icon');
     }
