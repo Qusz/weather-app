@@ -143,7 +143,7 @@ export class Utilities {
       case 'Fog':
         return './assets/img/weather_icons/animated/fog.svg';
       case 'Drizzle':
-        return './img/weather_icons/animated/drizzle.svg';
+        return './assets//img/weather_icons/animated/drizzle.svg';
       case 'Rain':
       case 'Showers':
         return './assets/img/weather_icons/animated/rain.svg';
