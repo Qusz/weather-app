@@ -6,12 +6,12 @@
   "license": "ISC",
   "scripts": {
     "start": "serve ./",
-    "public:html": "copyfiles -u 1 ./src/*.html public",
-    "public:js": "copyfiles -u 1 ./src/js/**/* public",
-    "public:css": "copyfiles -u 1 ./src/*.css public",
-    "public:assets": "copyfiles -u 1 ./src/assets/**/* public",
+    "public:html": "copyfiles -u 1 \"./src/*.html\" public",
+    "public:js": "copyfiles -u 1 \"./src/js/**/*\" public",
+    "public:css": "copyfiles -u 1 \"./src/*.css\" public",
+    "public:assets": "copyfiles -u 1 \"./src/assets/**/*\" public",
     "public": "npm-run-all --parallel public:*",
-    "postbuild": "postcss ./public/style.css -u autoprefixer cssnano -r --no-map",
+    "postbuild": "postcss public/style.css -u autoprefixer cssnano -r --no-map",
     "build": "npm-run-all public postbuild"
   },
   "devDependencies": {
