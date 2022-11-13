@@ -1,18 +1,24 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "A simple weather web application build with Bootstrap and vanilla JavaScript.",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Qusz/weather-app.git"
-  },
   "author": "Qusz",
   "license": "ISC",
   "scripts": {
-    "start": "serve ./"
+    "start": "serve ./",
+    "public:html": "copyfiles -u 1 ./src/*.html public",
+    "public:js": "copyfiles -u 1 ./src/js/**/* public",
+    "public:css": "copyfiles -u 1 ./src/*.css public",
+    "public": "npm-run-all --parallel public:*",
+    "postbuild": "postcss ./public/style.css -u autoprefixer cssnano -r --no-map",
+    "build": "npm-run-all public postbuild"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^5.1.14",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.0.0",
     "serve": "^14.1.1"
   }
 }
