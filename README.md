@@ -8,6 +8,9 @@ This is a training project I built to practice working with REST API, Fetch API,
   - Bootstrap 5
   - Vanilla JavaScript ES6+
   
+## Live demo
+https://regal-creponne-f1673e.netlify.app
+  
 ## APIs
 None of these API require authentication.
 
