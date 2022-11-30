@@ -1,5 +1,5 @@
 # Weather-App - a weather application
-A simple weather web application build with Bootstrap and vanilla JavaScript. 
+A simple weather web application built with Bootstrap and vanilla JavaScript. 
 
 ## Introduction
 This is a training project I built to practice working with REST API, Fetch API, Promises and async/await.
