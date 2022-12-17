@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-VariableFont_slnt,wght.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('./assets/fonts/Nunito-VariableFont_wght.ttf');
+}
+
+
+
+$fs-56: 3.5rem; // 56px
+$fs-36: 2.25rem; // 36px
+$fs-26: 1.625rem; // 26px
+$fs-24: 1.5rem; // 24px
+$fs-20: 1.25rem; // 20px
+$fs-18: 1.125rem; // 18px
+$fs-16: 1rem; // 16px
+$fs-14: .875rem; // 14px
+$fs-12: .75rem; // 12px
+
+
+
+$ff-inter: 'Inter';
+$ff-nunito: 'Nunito';

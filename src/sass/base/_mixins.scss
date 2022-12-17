@@ -1,0 +1,78 @@
+@use './colors' as *;
+@use './fonts' as *;
+@use './utilities' as *;
+
+@mixin navbar-hover {
+  transition: all .2s ease;
+
+  &:hover {
+    color: $clr-accent;
+  }
+
+  &:active {
+    color: $clr-secondary;
+  }
+}
+
+@mixin mobile-login ($bg-clr) {
+  border: 1px solid $clr-black;
+  border-radius: 12px;
+  background-color: $bg-clr;
+  padding: $spacer-xs $spacer-s;
+  text-align: center;
+
+  transition: all .2s ease;
+
+    &:active {
+      background-color: darken($bg-clr, 10);
+    }
+}
+
+@mixin checkbox ($bg-default, $bg-checked) {
+  appearance: none;
+  cursor: pointer;
+
+  padding: 0;
+  min-width: 1.35rem;
+  min-height: 1.35rem;
+  border-radius: 0.35rem;
+
+  transform: translateY(-.3rem);
+
+  background-color: $bg-default;
+
+  display: grid;
+  place-content: center;
+
+    &::before {
+      content: "";
+      width: 1em;
+      height: .5em;
+
+      transform: scale(0);
+      transition: transform 120ms ease-in-out;
+
+      background-image: url('./assets/etc/checkbox.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &:checked {
+      background-color: $bg-checked;
+
+      &::before {
+        transform: scale(1);
+      }
+    }
+
+    &:focus {
+      outline: 1px solid $clr-accent;
+    }
+}
+
+
+@mixin footer-item-layout {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: $spacer-xxl;
+}
