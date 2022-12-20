@@ -4,119 +4,182 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="./src/assets/favicon/favicon-32x32.png">
   <title>Weather App</title>
 </head>
 <body>
 
+  <nav class="navbar">
+    <div class="navbar__wrapper">
+      <img
+        class="navbar__logo"
+        src="/logo.png"
+        alt="website logo"
+      >
+      <button
+        class="navbar__location-button"
+        type="button"
+      >
+        Change location
+      </button>
+      <div class="navbar__location-change">
+        <label class="navbar__location-change-city">
+          City
+          <input 
+          class="navbar__location-change-city-input"
+          type="text"
+        >
+        </label>
+        <label class="navbar__location-change-country">
+          Country
+          <select name="change-country">
+            <option value="test">test</option>
+            <option value="test2">test2</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </nav>
+
   <main class="main">
 
-    <div class="container main-container">
-      <div class="card main-card mt-5 py-4 px-3 mx-auto">
-        <div class="card-body">
-          <h1 class="current-location card-title text-center"></h1>
-          <h4 class="current-time text-center"></h4>
-          <div class="mt-5 card-inner-wrapper d-flex">
-
-            <div class="main-card__left">
-              <h1 class="inner-title text-center mt-3">Now</h1>
-              <div class="d-flex weather-now">
-                <div class="weather-now__status"></div>
-                <div class="weather-now__temperature"></div>
-                <object data="" type="image/svg+xml" class="weather-icon weather-icon--now"></object>
-              </div>    
-              <div class="weather-now__details d-flex">
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Feels like
-                  <span class="badge weather-now__badge rounded-pill feelslike"></span>
-                </div>
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Wind
-                  <span class="badge weather-now__badge rounded-pill wind"></span>
-                </div>
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Pressure
-                  <span class="badge weather-now__badge rounded-pill pressure"></span>
-                </div>
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Humidity
-                  <span class="badge weather-now__badge rounded-pill humidity"></span>
-                </div>
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Sunrise 
-                  <span class="badge weather-now__badge rounded-pill sunrise"></span>
-                </div>
-                <div class="mt-2 weather-now__detail d-flex justify-content-between align-items-center">
-                  Sunset
-                  <span class="badge weather-now__badge rounded-pill sunset"></span>
-                </div>
-              </div>
+    <section class="current-weather">
+      <div class="card-current">
+        <div class="card-current__wrapper">
+          <section class="card-current__top">
+            <div class="card-current__location">
+              Lorem, Ipsum
             </div>
-
-            <div class="main-card__right">
-              <h1 class="weather-today__title mt-3 text-center">The Weather Today</h1>
-
-              <div class="weather-today-wrapper d-flex">
-                <div class="d-flex today-times">
-                  <div class=" today-time">6:00</div>
-                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--600  my-3"></object>
-                  <div class="today_temp__600"></div>
-                </div>
-                <div class="d-flex today-times">
-                  <div class="today-time">12:00</div>
-                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--1200  my-3"></object>
-                  <div class="today_temp__1200"></div>
-                </div>
-                <div class="d-flex today-times">
-                  <div class="today-time">18:00</div>
-                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--1800 my-3"></object>
-                  <div class=" today_temp__1800"></div>
-                </div>
-                <div class="d-flex today-times">
-                  <div class=" today-time">22:00</div>
-                  <object data="" type="image/svg+xml" class="weather-icon weather-icon--2200  my-3"></object>
-                  <div class="today_temp__2200"></div>
-                </div>
-
-              </div>
-
+            <div class="card-current__time">
+              14:20
             </div>
-          </div>
-      </div>
-    </div> 
-
-
-    <button type="button" class="btn btn-modal my-3 mx-auto" data-bs-toggle="modal" data-bs-target="#change-location-modal">
-      Change Location
-    </button>
-    <div class="modal fade" id="change-location-modal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Change City</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <form class="change-location-form">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control form-city" placeholder="Enter a city" required>
-              </div>
-              <div class="input-group mb-3">
-                <select class="form-select form-country">
-                </select>
-              </div>
-              <button type="button" class="btn modal-save-button">Save</button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+            <div class="card-current__overview">
+              <span class="card-current__overview-sky">
+                Overcast
+              </span>
+              <span class="card-current__overview-temp">
+                Overcast
+              </span>
+              <img
+                class="card-current__overview-icon"
+                src=""
+                alt="weather icon"
+              >
+            </div>
+          </section>
+          <section class="card-current__bottom">
+            <card class="card-current__details card-current__feels">
+              Feels like
+              <span>+22</span>
+            </card>
+            <div class="card-current__details card-current__wind">
+              Wind
+              <span>West, 13.4 km/h</span>
+            </div>
+            <div class="card-current__details card-current__pressure">
+              Pressure
+              <span>1000.2 hPa</span>
+            </div>
+            <div class="card-current__details card-current__humidity">
+              Humidity
+              <span>91%</span>
+            </div>
+            <div class="card-current__details card-current__sunrise">
+              Sunrise
+              <span>09:08</span>
+            </div>
+            <div class="card-current__details card-current__sunset">
+              Sunset
+              <span>15:58</span>
+            </div>
+          </section>
         </div>
       </div>
-    </div>              
-  </div>
+    </section>
+
+    <section class="forecast">
+      <table class="forecast__table">
+        <tr class="forecast__table-headers">
+          <th class="forecast__table-header forecast-hour">
+            Hour
+          </th>
+          <th class="forecast__table-header forecast-temp">
+            Temperature
+          </th>
+          <th class="forecast__table-header forecast-weather">
+            Weather
+          </th>
+          <th class="forecast__table-header forecast-pressure">
+            Pressure
+          </th>
+          <th class="forecast__table-header forecast-wind">
+            Wind
+          </th>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+        <tr class="forecast__table-row">
+          <td>19:00</td>
+          <td>+22</td>
+          <td>Overcast</td>
+          <td>955.54</td>
+          <td>16.4 m/s - West</td>
+        </tr>
+      </table>
+    </section>
+
+
 
   </main>
+
+ 
 
   <script type="module" src="./src/js/main.js"></script>
 </body>
