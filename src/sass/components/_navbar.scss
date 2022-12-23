@@ -1,0 +1,126 @@
+@use '../base/' as *;
+
+.navbar {
+  position: relative;
+  background-color: $clr-secondary;
+  user-select: none;
+
+    &__wrapper {
+      padding-block: $spacer-m;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__location {
+      &-change {
+        position: absolute;
+        top: 120px;
+        right: 50px;
+        z-index: 3;
+
+        background-color: $clr-primary;
+        padding: $spacer-xxl $spacer-jumbo;
+        border: 2px solid $clr-secondary;
+        border-radius: 8px;
+
+        display: flex;
+        flex-direction: column;
+        gap: $spacer-xxl;
+ 
+        opacity: 0;
+        transform: scale(0);
+        transition: all .2s ease-in;
+
+        //! Temp
+        display: none;
+
+          &.is-active {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          &-city,
+          &-country {
+            display: flex;
+            flex-direction: column;
+            gap: $spacer-s;
+          }
+
+          &-city {
+            &-input {
+              padding-inline: $spacer-xs;
+              border: 1px solid $clr-secondary;
+              border-radius: 8px;
+
+                &:focus {
+                  outline: 4px solid $clr-secondary;
+                  border-color: $clr-secondary;
+                }
+            }
+          }
+
+          &-country {
+            &-input {
+              appearance: none;
+              background-color: $clr-white;
+              padding-inline: $spacer-xs;
+
+              border: 1px solid $clr-secondary;
+              border-radius: 8px;
+            }
+          }
+
+          &-buttons {
+            display: flex;
+            align-self: center;
+            gap: $spacer-l;
+
+          }
+      }
+    }
+}
+
+
+
+
+//* ================
+//* Typograhpy
+//* ================
+
+.navbar {
+  &__logo {
+    font-family: $ff-inter;
+    font-size: $fs-36;
+    font-weight: 700;
+    color: $clr-white;
+  }
+
+  &__location {
+    &-change {
+      &-city,
+      &-country {
+        font-family: $ff-inter;
+        font-size: $fs-24;
+        font-weight: 600;
+      }
+
+      &-city-input,
+      &-country-input {
+        font-family: $ff-nunito;
+        font-size: $fs-18;
+        font-weight: 400;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 440px) {
+  .navbar {
+    &__logo {
+      font-size: $fs-24;
+      font-weight: 600;
+    }
+  }
+}

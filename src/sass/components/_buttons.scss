@@ -1,0 +1,46 @@
+@use '../base/' as *;
+
+@mixin btn-color($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+
+    &:hover {
+      background-color: lighten($bg-color, 8);
+    }
+
+    &:active {
+      background-color: $bg-color;
+    }
+}
+
+.btn {
+  padding: $spacer-xxs $spacer-xs;
+  min-width: 80px;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  font-family: $ff-nunito;
+  font-size: $fs-20;
+  font-weight: 600;
+
+}
+
+.btn-primary {
+  @include btn-color($clr-primary, $clr-secondary);
+  border: 1px solid $clr-secondary;
+}
+
+.btn-secondary {
+  @include btn-color($clr-secondary, $clr-primary);
+}
+
+
+
+@media screen and (max-width: 440px) {
+  .btn {
+    font-size: $fs-16;
+  }
+}

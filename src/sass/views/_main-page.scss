@@ -1,1 +1,12 @@
 @use '../base/' as *;
+
+body {
+  background-color: $clr-primary;
+}
+
+.weather {
+  padding: $spacer-jumbo $spacer-m;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer-jumbo;
+}

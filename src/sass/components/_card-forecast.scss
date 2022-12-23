@@ -1,0 +1,52 @@
+@use '../base/' as *;
+
+.forecast {
+  overflow-x: auto;
+  text-align: center;
+  user-select: none;
+
+
+    &__table {
+      width: 100%;
+      max-width: 50rem;
+
+      border: 2px solid $clr-secondary;
+      border-radius: 6px;
+
+      border-spacing: 0.3rem;
+      margin: 0;
+      padding: $spacer-xxs $spacer-xs;
+
+      white-space: nowrap;
+
+        &-header {
+          background-color: $clr-secondary;
+          border-radius: 6px;
+          padding-inline: $spacer-xxs;
+        }
+    }
+    
+}
+
+
+
+//* ================
+//* Typograhpy
+//* ================
+
+.forecast {
+  &__table {
+    &-header {
+      font-family: $ff-inter;
+      font-size: $fs-24;
+      font-weight: 500;
+      color: $clr-primary;
+    }
+
+    &-row {
+      font-family: $ff-nunito;
+      font-size: $fs-20;
+      font-weight: 400;
+    }
+  }
+}

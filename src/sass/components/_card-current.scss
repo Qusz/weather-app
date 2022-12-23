@@ -1,0 +1,79 @@
+@use '../base/' as *;
+
+.current-weather {
+  display: inline-block;
+  padding: $spacer-l;
+  min-width: 320px;
+
+  white-space: nowrap;
+  user-select: none;
+
+  border: 2px solid $clr-secondary;
+  border-radius: 6px;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $spacer-s;
+    }
+
+    &__top {
+      display: flex;
+      flex-direction: column;
+      gap: $spacer-xs;
+    }
+
+    &__overview {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+}
+
+
+
+//* ================
+//* Typograhpy
+//* ================
+
+.current-weather {
+  &__location {
+    font-family: $ff-inter;
+    font-size: $fs-36;
+    font-weight: 600;
+  }
+
+  &__time {
+    font-family: $ff-inter;
+    font-size: $fs-24;
+    font-weight: 500;
+
+  }
+
+  &__overview {
+    font-family: $ff-nunito;
+    font-size: $fs-26;
+    font-weight: 500;
+  }
+
+  &__bottom {
+    font-family: $ff-inter;
+  }
+
+  &__details {
+    font-size: $fs-24;
+    font-weight: 500;
+
+      span {
+        font-size: $fs-20;
+        font-weight: 400;
+      }
+
+  }
+}
