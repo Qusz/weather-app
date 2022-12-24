@@ -53,10 +53,10 @@ export class Openmeteo {
   }
 }
 
-export class TimeAPI {
+export class WorldTime {
   async getTime(timezone) {
     try {
-      const request = await fetch(`https://www.timeapi.io/api/Time/current/zone?timeZone=${timezone}`);
+      const request = await fetch(`https://worldtimeapi.org/api/timezone/${timezone}`);
       const response = await request.json();
       return response;
     } catch {

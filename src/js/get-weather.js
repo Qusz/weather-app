@@ -1,4 +1,4 @@
-import { GeoJS, Nominatim, Openmeteo, TimeAPI } from "./apicalls.js";
+import { GeoJS, Nominatim, Openmeteo, WorldTime } from "./apicalls.js";
 import { Utilities } from "./utilities.js";
 import { UI } from "./ui.js";
 
@@ -6,7 +6,7 @@ export function getWeather() {
   const ipinfo = new GeoJS(),
         geocode = new Nominatim(),
         weather = new Openmeteo(),
-        time = new TimeAPI(),
+        time = new WorldTime(),
         utl = new Utilities(),
         ui = new UI();
 
@@ -33,7 +33,7 @@ export function getWeather() {
           return time.getTime(data.timezone);
         })
         .then(data => {
-          ui.showCurrentTime(data.dateTime, data.timeZone);
+          ui.showCurrentTime(data.datetime);
           return data
         })
         .catch((error) => {
@@ -57,7 +57,7 @@ export function getWeather() {
           return time.getTime(data.timezone);
         })
         .then(data => {
-          ui.showCurrentTime(data.dateTime);
+          ui.showCurrentTime(data.datetime);
         })
         .catch (error => {
           ui.showAlert(error.message);
