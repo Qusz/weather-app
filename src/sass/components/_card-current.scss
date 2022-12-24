@@ -23,6 +23,7 @@
 
     &__overview {
       @include flex-center-between;
+      gap: $spacer-s;
     }
 
     &__details {
