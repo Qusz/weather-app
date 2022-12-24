@@ -18,9 +18,9 @@
         class="navbar__location-button btn btn-primary"
         type="button"
       >
-        Change location
+        Select location
       </button>
-      <form class="navbar__location-change is-active">
+      <form class="navbar__location-change">
         <label class="navbar__location-change-city">
           City
           <input 
@@ -34,19 +34,17 @@
             class="navbar__location-change-country-input"
             name="change-country" 
           >
-            <option class="country-option" value="test">test</option>
-            <option class="country-option" value="test2">test2</option>
           </select>
         </label>
         <div class="navbar__location-change-buttons">
           <button 
-            class="navbar__location-change-button btn btn-secondary"
+            class="navbar__location-change-button location-cancel-button btn btn-secondary"
             type="button"
           >
             Cancel
           </button>
           <button 
-            class="navbar__location-change-button btn btn-primary"
+            class="navbar__location-change-button location-submit-button btn btn-primary"
             type="submit"
           >
             Ok
@@ -62,22 +60,14 @@
       <section class="current-weather">
         <div class="current-weather__wrapper container">
           <section class="current-weather__top">
-            <div class="current-weather__location">
-              Lorem, Ipsum
-            </div>
-            <div class="current-weather__time">
-              14:20
-            </div>
+            <div class="current-weather__location"></div>
+            <div class="current-weather__time"></div>
             <div class="current-weather__overview">
-              <span class="current-weather__overview-sky">
-                Overcast
-              </span>
-              <span class="current-weather__overview-temp">
-                +20°
-              </span>
+              <span class="current-weather__overview-sky"></span>
+              <span class="current-weather__overview-temp"></span>
               <img
                 class="current-weather__overview-icon"
-                src="./src/assets/icons/sunny.png"
+                src=""
                 alt="weather icon"
               >
             </div>
@@ -85,110 +75,56 @@
           <section class="current-weather__bottom">
             <card class="current-weather__details current-weather__feels">
               Feels like
-              <span>+22</span>
+              <span class="feels-like-data"></span>
             </card>
             <div class="current-weather__details current-weather__wind">
               Wind
-              <span>West, 13.4 km/h</span>
+              <span class="wind-data"></span>
             </div>
             <div class="current-weather__details current-weather__pressure">
               Pressure
-              <span>1000.2 hPa</span>
+              <span class="pressure-data"></span>
             </div>
             <div class="current-weather__details current-weather__humidity">
               Humidity
-              <span>91%</span>
+              <span class="humidity-data"></span>
             </div>
             <div class="current-weather__details current-weather__sunrise">
               Sunrise
-              <span>09:08</span>
+              <span class="sunrise-data"></span>
             </div>
             <div class="current-weather__details current-weather__sunset">
               Sunset
-              <span>15:58</span>
+              <span class="sunset-data"></span>
             </div>
           </section>
         </div>
       </section>
       <section class="forecast">
         <table class="forecast__table container">
-          <tr class="forecast__table-headers">
-            <th class="forecast__table-header forecast-hour">
-              Hour
-            </th>
-            <th class="forecast__table-header forecast-temp">
-              Temperature
-            </th>
-            <th class="forecast__table-header forecast-weather">
-              Weather
-            </th>
-            <th class="forecast__table-header forecast-pressure">
-              Pressure
-            </th>
-            <th class="forecast__table-header forecast-wind">
-              Wind
-            </th>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
-          <tr class="forecast__table-row">
-            <td>19:00</td>
-            <td>+22</td>
-            <td>Overcast</td>
-            <td>955.54</td>
-            <td>16.4 m/s - West</td>
-          </tr>
+          <thead class="forecast__table-head">
+            <tr class="forecast__table-headers">
+              <th class="forecast__table-header forecast-hour">
+                Hour
+              </th>
+              <th class="forecast__table-header forecast-temp">
+                Temperature
+              </th>
+              <th class="forecast__table-header forecast-weather">
+                Weather
+              </th>
+              <th class="forecast__table-header forecast-pressure">
+                Pressure
+              </th>
+              <th class="forecast__table-header forecast-wind">
+                Wind
+              </th>
+            </tr>
+          </thead>
+          <tbody class="forecast__table-body"></tbody>
         </table>
       </section>
     </section>
-
 
 
   </main>

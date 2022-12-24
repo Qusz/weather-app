@@ -3,7 +3,6 @@
 .navbar {
   position: relative;
   background-color: $clr-secondary;
-  user-select: none;
 
     &__wrapper {
       padding-block: $spacer-m;
@@ -12,42 +11,33 @@
       align-items: center;
     }
 
-    &__location {
-      &-change {
-        position: absolute;
-        top: 120px;
-        right: 50px;
-        z-index: 3;
+    &__location-change {
+      position: absolute;
+      top: 120px;
+      right: 50px;
+      z-index: 99;
 
-        background-color: $clr-primary;
-        padding: $spacer-xxl $spacer-jumbo;
-        border: 2px solid $clr-secondary;
-        border-radius: 8px;
+      max-width: 500px;
 
-        display: flex;
-        flex-direction: column;
-        gap: $spacer-xxl;
- 
-        opacity: 0;
-        transform: scale(0);
-        transition: all .2s ease-in;
+      background-color: $clr-primary;
+      padding: $spacer-xxl $spacer-jumbo;
+      border: 2px solid $clr-secondary;
+      border-radius: 8px;
 
-        //! Temp
-        display: none;
+      @include flex-column($spacer-xxl);
 
-          &.is-active {
-            opacity: 1;
-            transform: scale(1);
-          }
+      opacity: 0;
+      transform: scale(0);
+      transition: all .3s ease;
 
-          &-city,
-          &-country {
-            display: flex;
-            flex-direction: column;
-            gap: $spacer-s;
-          }
+        &.is-active {
+          opacity: 1;
+          transform: scale(1);
+        }
 
-          &-city {
+        &-city {
+          @include flex-column($spacer-s);
+
             &-input {
               padding-inline: $spacer-xs;
               border: 1px solid $clr-secondary;
@@ -58,9 +48,11 @@
                   border-color: $clr-secondary;
                 }
             }
-          }
+        }
 
-          &-country {
+        &-country {
+          @include flex-column($spacer-s);
+
             &-input {
               appearance: none;
               background-color: $clr-white;
@@ -69,18 +61,16 @@
               border: 1px solid $clr-secondary;
               border-radius: 8px;
             }
-          }
+        }
 
-          &-buttons {
-            display: flex;
-            align-self: center;
-            gap: $spacer-l;
+        &-buttons {
+          display: flex;
+          align-self: center;
+          gap: $spacer-l;
 
-          }
-      }
+        }
     }
 }
-
 
 
 
@@ -116,11 +106,29 @@
 
 }
 
+
+
+//* ================
+//* Mobile
+//* ================
+
 @media screen and (max-width: 440px) {
   .navbar {
     &__logo {
       font-size: $fs-24;
       font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    &__location-change {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      max-width: none;
     }
   }
 }

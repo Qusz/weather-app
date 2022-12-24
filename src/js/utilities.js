@@ -1,21 +1,18 @@
 export class Utilities {
-  currentTime(time, timezone) {
+  longTime(time) {
     const date = Date.parse(time);
     const options = {
-      weekday: 'long', 
-      year: 'numeric', 
       month: 'long', 
       day: 'numeric', 
       hour: 'numeric', 
       minute: 'numeric',
-      timeZone: timezone
     }
 
     const timeNow = new Intl.DateTimeFormat('en-GB', options).format(date);
     return timeNow;
   }
 
-  setSunTime(time) {
+  shortTime(time) {
     const date = Date.parse(time);
     const options = {
       hour: 'numeric', 
@@ -26,7 +23,10 @@ export class Utilities {
   }
 
   localStorageExists() {
-    if (localStorage.getItem('city') === null && localStorage.getItem('country') === null) {
+    if (
+      localStorage.getItem('city') === null && 
+      localStorage.getItem('country') === null
+    ) {
       return false;
     } else {
       return true;
@@ -39,14 +39,17 @@ export class Utilities {
     } else {
       const city = localStorage.getItem('city');
       const country = localStorage.getItem('country');
-      return {city, country};
+      return { city, country };
     }
   }
 
   saveLocation(city, country) {
     localStorage.setItem('city', city);
     localStorage.setItem('country', country);
-    $('#change-location-modal').modal('hide');
+  }
+
+  toggleClass(target, className) {
+    target.classList.toggle(className);
   }
   
   weatherStatus(code) {
@@ -93,39 +96,39 @@ export class Utilities {
   windDirection(degree) {
     switch(true) {
       case ((degree >= 0 ) && (degree <= 19)):
-        return 'North';
+        return 'N';
       case ((degree >= 20 ) && (degree <= 39)):
-        return 'North / North-East';
+        return 'N/NE';
       case ((degree >= 40 ) && (degree <= 59)):
-        return 'North-East';
+        return 'NE';
       case ((degree >= 60 ) && (degree <= 79)):
-        return 'East / North-East';
+        return 'E/NE';
       case ((degree >= 80 ) && (degree <= 109)):
-        return 'East';
+        return 'E';
       case ((degree >= 110 ) && (degree <= 129)):
-        return 'East / South-East';
+        return 'E/SE';
       case ((degree >= 130 ) && (degree <= 149)):
-        return 'South-East';
+        return 'SE';
       case ((degree >= 150 ) && (degree <= 169)):
-        return 'South / South-East';
+        return 'S/SE';
       case ((degree >= 170 ) && (degree <= 199)):
-        return 'South';
+        return 'S';
       case ((degree >= 200 ) && (degree <= 219)):
-        return 'South / South-West';
+        return 'S/SW';
       case ((degree >= 220 ) && (degree <= 239)):
-        return 'South-West';
+        return 'SW';
       case ((degree >= 240 ) && (degree <= 259)):
-        return 'West / South-West';
+        return 'W/SW';
       case ((degree >= 260 ) && (degree <= 289)):
-        return 'West';
+        return 'W';
       case ((degree >= 290 ) && (degree <= 309)):
-        return 'West / North-West';
+        return 'W/NW';
       case ((degree >= 310 ) && (degree <= 329)):
-        return 'North-West';
+        return 'NW';
       case ((degree >= 330 ) && (degree <= 349)):
-        return 'North / North-West';
+        return 'N/NW';
       case ((degree >= 350 ) && (degree <= 360)):
-        return 'North';
+        return 'N';
       default:
         return 'ERROR: Incorrect wind direction';
     }
@@ -135,23 +138,24 @@ export class Utilities {
     switch(weatherStatus) {
       case 'Clear sky':
       case 'Mainly clear':
-        return './assets/img/weather_icons/animated/clear-day.svg';
+        return '/clear-sky.png';
       case 'Partly cloudy':
-        return './assets/img/weather_icons/animated/partly-cloudy-day.svg';
+        return '/partly-cloudy.png';
       case 'Overcast':
-        return './assets/img/weather_icons/animated/overcast-day.svg';
+        return '/overcast.png';
       case 'Fog':
-        return './assets/img/weather_icons/animated/fog.svg';
+        return '/fog.png';
       case 'Drizzle':
-        return './assets/img/weather_icons/animated/drizzle.svg';
+        return '/drizzle.png';
       case 'Rain':
+        return '/rain.png';
       case 'Showers':
-        return './assets/img/weather_icons/animated/rain.svg';
+        return '/showers.png';
       case 'Freezing rain':
-        return './assets/img/weather_icons/animated/sleet.svg';
+        return '/freezing-rain.png';
       case 'Snowfall':
       case 'Snow showers':
-        return './assets/img/weather_icons/animated/snow.svg';
+        return '/showfall.png';
       default:
         return ('ERROR: Can\'t load weather icon');
     }

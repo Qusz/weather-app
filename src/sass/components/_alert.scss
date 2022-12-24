@@ -1,0 +1,24 @@
+@use '../base/' as *;
+
+.alert {
+  display: inline-block;
+  background-color: $clr-alert;
+  padding: $spacer-xs $spacer-s;
+  color: $clr-primary;
+  
+  border-radius: 8px;
+  min-width: 18.75rem;
+
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  z-index: 99;
+
+  text-align: center;
+  font-family: $ff-nunito;
+  font-size: $fs-16;
+  font-weight: 400;
+}

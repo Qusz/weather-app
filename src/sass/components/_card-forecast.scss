@@ -5,7 +5,6 @@
   text-align: center;
   user-select: none;
 
-
     &__table {
       width: 100%;
       max-width: 50rem;
@@ -13,7 +12,7 @@
       border: 2px solid $clr-secondary;
       border-radius: 6px;
 
-      border-spacing: 0.3rem;
+      border-spacing: 0.5rem;
       margin: 0;
       padding: $spacer-xxs $spacer-xs;
 

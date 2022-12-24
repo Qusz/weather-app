@@ -1,5 +1,4 @@
 export class GeoJS {
-
   async getIP() { 
     try {
       const request = await fetch(`https://get.geojs.io/v1/ip/geo.json`);
@@ -12,11 +11,11 @@ export class GeoJS {
 }
 
 export class Nominatim {
-
   async geoForward(city, country) {
     try {
       //* limit=1 is in the query so that there's always only 1 array in the response
-      const request = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&country=${country}&format=json&addressdetails=1&limit=1`);
+      const request = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&country=${country}&format=json&addressdetails=1&limit=1&accept-language=en-US`);
+      
       const response = await request.json();
       return response;
     } catch {
@@ -35,10 +34,10 @@ export class Nominatim {
 }
 
 export class Openmeteo {
-
   async getWeather(lat, lng) {
     try {
       const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}1&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,weathercode,pressure_msl,windspeed_10m&daily=weathercode,sunrise,sunset&current_weather=true&timezone=auto`);
+
       const response = await request.json();
       return response;
     } catch {
@@ -54,11 +53,10 @@ export class Openmeteo {
   }
 }
 
-export class Worldtime {
-  
+export class TimeAPI {
   async getTime(timezone) {
     try {
-      const request = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`);
+      const request = await fetch(`https://www.timeapi.io/api/Time/current/zone?timeZone=${timezone}`);
       const response = await request.json();
       return response;
     } catch {

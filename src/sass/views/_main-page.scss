@@ -7,6 +7,13 @@ body {
 .weather {
   padding: $spacer-jumbo $spacer-m;
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: $spacer-jumbo;
+}
+
+@media screen and (max-width: 768px) {
+  .weather {
+    justify-content: center;
+  }
 }

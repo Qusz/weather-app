@@ -1,93 +1,114 @@
 import { Utilities } from "./utilities.js";
-import { countryList } from "./country_list.js";
+import { countryList } from "./country-list.js";
 
 export class UI {
   constructor() {
-    this.utl = new Utilities;
+    this.utl = new Utilities();
+    this.refs = {
+      currentTime: this.selector('.current-weather__time'),
+      currentLocation: this.selector('.current-weather__location'),
+      currentWeatherStatus: this.selector('.current-weather__overview-sky'),
+      currentTemperature: this.selector('.current-weather__overview-temp'),
+      currentWeatherIcon: this.selector('.current-weather__overview-icon'),
+      currentFeelsLike: this.selector('.feels-like-data'),
+      currentWind: this.selector('.wind-data'),
+      currentPressure: this.selector('.pressure-data'),
+      currentHumidity: this.selector('.humidity-data'),
+      currentSunrise: this.selector('.sunrise-data'),
+      currentSunset: this.selector('.sunset-data'),
 
-    this.currentTime = document.querySelector('.current-time');
-    this.currentLocation = document.querySelector('.current-location');
-
-    this.weatherStatus = document.querySelector('.weather-now__status');
-    this.temperature = document.querySelector('.weather-now__temperature');
-    this.iconNow = document.querySelector('.weather-icon--now');
-    this.feelslike = document.querySelector('.feelslike');
-    this.wind = document.querySelector('.wind');
-    this.pressure = document.querySelector('.pressure');
-    this.humidity = document.querySelector('.humidity');
-    this.sunrise = document.querySelector('.sunrise');
-    this.sunset = document.querySelector('.sunset');
-    
-    this.six = document.querySelector('.today_temp__600');
-    this.twelve = document.querySelector('.today_temp__1200');
-    this.eighteen = document.querySelector('.today_temp__1800');
-    this.twentytwo = document.querySelector('.today_temp__2200');
-    this.icon600 = document.querySelector('.weather-icon--600');
-    this.icon1200 = document.querySelector('.weather-icon--1200');
-    this.icon1800 = document.querySelector('.weather-icon--1800');
-    this.icon2200 = document.querySelector('.weather-icon--2200');
-
-    this.country = document.querySelector('.form-country');
+      forecastTableBody: this.selector('.forecast__table-body'),
+      selectCountry: this.selector('.navbar__location-change-country-input')
+    }
   }
 
-  showTime(time, timezone) {
-    this.currentTime.textContent = this.utl.currentTime(time, timezone);
+  selector(target) {
+    return document.querySelector(target);
+  }
+
+  showCurrentTime(time) {
+    this.refs.currentTime.textContent = this.utl.longTime(time);
   }
 
   showLocation(city, country) {
-    this.currentLocation.textContent = `${city}, ${country}`;
+    this.refs.currentLocation.textContent = `${city}, ${country}`;
   }
 
   showWeatherNow(response) {
-
-    //* There is not enough data in 'the currect_weather' object
-    //* Have to access data from 'hourly' using the current_weather timestamp as index
-    //* Sunrise & Sunset are taken from the 'daily' object 
+    /*
+    * There is not enough data in 'the currect_weather' object
+    * Have to access data from 'hourly' using the current_weather timestamp as index
+    * Sunrise & Sunset are taken from the 'daily' object 
+    */
     
     const currentTimeStamp = response.current_weather.time,
           currentTimeIndex = response.hourly.time.indexOf(currentTimeStamp);
     
-    const currentWeatherStatus = this.utl.weatherStatus(response.current_weather.weathercode),
-          currentWindDirection = this.utl.windDirection(response.current_weather.winddirection),
-          currentTemp = response.hourly.temperature_2m[currentTimeIndex],
-          currentFeels = response.hourly.apparent_temperature[currentTimeIndex],
-          currentWindSpeed = response.hourly.windspeed_10m[currentTimeIndex],
-          currentPressure = response.hourly.pressure_msl[currentTimeIndex],
-          currentHumidity = response.hourly.relativehumidity_2m[currentTimeIndex],
-          currentSunrise = this.utl.setSunTime(response.daily.sunrise[0]),
-          currentSunset = this.utl.setSunTime(response.daily.sunset[0]);
+    const currentWeather = {
+      weatherStatus: this.utl.weatherStatus(response.current_weather.weathercode),
+      windDirection: this.utl.windDirection(response.current_weather.winddirection),
+      temperature: response.hourly.temperature_2m[currentTimeIndex],
+      feels: response.hourly.apparent_temperature[currentTimeIndex],
+      windSpeed: response.hourly.windspeed_10m[currentTimeIndex],
+      pressure: response.hourly.pressure_msl[currentTimeIndex],
+      humidity: response.hourly.relativehumidity_2m[currentTimeIndex],
+      sunrise: this.utl.shortTime(response.daily.sunrise[0]),
+      sunset: this.utl.shortTime(response.daily.sunset[0])
+    }
 
-    //* Show weather 
-    this.weatherStatus.textContent = `${currentWeatherStatus}`;
-    this.temperature.textContent = `${currentTemp} °C`;
-    this.feelslike.textContent = `${currentFeels} °C`;
-    this.wind.textContent = `${currentWindDirection}, ${currentWindSpeed} km/h`;
-    this.pressure.textContent = `${currentPressure} hPa`;
-    this.humidity.textContent = `${currentHumidity}%`;
-    this.sunrise.textContent = `${currentSunrise}`; 
-    this.sunset.textContent = `${currentSunset}`;
+    this.refs.currentWeatherStatus.textContent = `${currentWeather.weatherStatus}`;
+    this.refs.currentTemperature.textContent = `${currentWeather.temperature}°C`;
+    this.refs.currentFeelsLike.textContent = `${currentWeather.feels}°C`;
+    this.refs.currentWind.textContent = `${currentWeather.windDirection}, ${currentWeather.windSpeed} km/h`
+    this.refs.currentPressure.textContent = `${currentWeather.pressure} hPa`;
+    this.refs.currentHumidity.textContent = `${currentWeather.humidity}%`;
+    this.refs.currentSunrise.textContent = `${currentWeather.sunrise}`;
+    this.refs.currentSunset.textContent = `${currentWeather.sunset}`;
+    this.refs.currentWeatherIcon.src = `${this.utl.pickIcon(currentWeather.weatherStatus)}`;
 
-    //* Show icon
-    this.iconNow.data =`${this.utl.pickIcon(currentWeatherStatus)}`;
   }
 
   showWeatherToday(response) {
-    //* Index is hard-coded to match the displayed static timestamps (600, 1200, 1800, 2200)
-    const weatherStatus600 = this.utl.weatherStatus(response.hourly.weathercode[6]),
-          weatherStatus1200 = this.utl.weatherStatus(response.hourly.weathercode[12]),
-          weatherStatus1800 = this.utl.weatherStatus(response.hourly.weathercode[18]),
-          weatherStatus2200 = this.utl.weatherStatus(response.hourly.weathercode[22]);
+    let pointStep = 0;
+    let currentIndex = null;
+    const forecastPoints = 8;
 
-    this.six.textContent = `${response.hourly.temperature_2m[6]} °C`;
-    this.twelve.textContent = `${response.hourly.temperature_2m[12]} °C`;
-    this.eighteen.textContent = `${response.hourly.temperature_2m[18]} °C`;
-    this.twentytwo.textContent = `${response.hourly.temperature_2m[22]} °C`;
+    const currentHour = response.current_weather.time;
 
-    //* Show icons
-    this.icon600.data = `${this.utl.pickIcon(weatherStatus600)}`;
-    this.icon1200.data = `${this.utl.pickIcon(weatherStatus1200)}`;
-    this.icon1800.data = `${this.utl.pickIcon(weatherStatus1800)}`;
-    this.icon2200.data = `${this.utl.pickIcon(weatherStatus2200)}`;
+    // Clear table body first so that data doesn't stack up on location change
+    this.refs.forecastTableBody.innerHTML = '';
+
+    response.hourly.time.forEach((point, index) => {
+      if (point === currentHour) {
+        currentIndex = index;
+      } 
+    });
+
+    for (let i = 0; i < forecastPoints; i++) {
+      pointStep += 2;
+
+      const newRow = document.createElement('tr');
+      newRow.className = 'forecast__table-row';
+      newRow.innerHTML = `
+        <td>
+          ${this.utl.shortTime(response.hourly.time[currentIndex + pointStep])}
+        </td>
+        <td>
+          ${response.hourly.temperature_2m[currentIndex + pointStep]}°C
+        </td>
+        <td>
+          ${this.utl.weatherStatus(response.hourly.weathercode[currentIndex + pointStep])}
+        </td>
+        <td>
+          ${response.hourly.pressure_msl[currentIndex + pointStep]} hPa
+        </td>
+        <td>
+          ${response.hourly.windspeed_10m[currentIndex + pointStep]} km/h
+        </td>
+      `;
+
+      this.refs.forecastTableBody.appendChild(newRow);
+    }
   }
 
   chooseCountry() {
@@ -96,20 +117,20 @@ export class UI {
       option.className = 'option-country';
       option.value = `${countryList[property]}`;
       option.textContent = `${countryList[property]}`;
-      this.country.appendChild(option);
+      this.refs.selectCountry.appendChild(option);
     }
   }
   
-  showAlert(message, className, parentElementClass, nextElementClass) {
-    //* First clear previous alert if there's one
+  showAlert(message) {
+    // First clear previous alert if there's one
     this.clearAlert();
-    const alert  = document.createElement('div'),
-          parent = document.querySelector(parentElementClass),
-          nextElement = document.querySelector(nextElementClass);
 
-    alert.className = className;
-    alert.appendChild(document.createTextNode(message));
-    parent.insertBefore(alert, nextElement);    
+    const alert  = document.createElement('div');
+    alert.className = 'alert';
+    alert.textContent = message;
+    document.body.appendChild(alert);
+
+    setTimeout(this.clearAlert, 4000);
   }
 
   clearAlert() {

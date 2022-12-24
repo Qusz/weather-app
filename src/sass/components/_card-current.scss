@@ -3,36 +3,29 @@
 .current-weather {
   display: inline-block;
   padding: $spacer-l;
-  min-width: 320px;
-
-  white-space: nowrap;
-  user-select: none;
+  min-width: 300px;
 
   border: 2px solid $clr-secondary;
   border-radius: 6px;
 
+    &__time {
+      white-space: nowrap;
+    }
+
     &__wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: $spacer-s;
+      @include flex-column($spacer-s);
     }
 
     &__top {
-      display: flex;
-      flex-direction: column;
-      gap: $spacer-xs;
+      @include flex-column($spacer-xs);
     }
 
     &__overview {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-center-between;
     }
 
     &__details {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-center-between;
     }
 }
 
@@ -74,6 +67,5 @@
         font-size: $fs-20;
         font-weight: 400;
       }
-
   }
 }

@@ -1,1 +1,13 @@
 @use './vars' as *;
+
+@mixin flex-column($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
