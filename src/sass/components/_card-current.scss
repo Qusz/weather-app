@@ -8,7 +8,8 @@
   border: 2px solid $clr-secondary;
   border-radius: 6px;
 
-    &__time {
+    &__time,
+    &__overview-sky {
       white-space: nowrap;
     }
 
