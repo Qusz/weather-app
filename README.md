@@ -5,8 +5,8 @@ A simple weather web application build with Bootstrap and vanilla JavaScript.
 This is a training project I built to practice working with REST API, Fetch API, Promises and async/await.
 
 ## Built with
-  - Bootstrap 5
-  - Vanilla JavaScript ES6+
+  - JavaScript ES6+
+  - SASS
   
 ## Live demo
 https://regal-creponne-f1673e.netlify.app
@@ -17,7 +17,7 @@ None of these API require authentication.
   - **IP IP Geolocation lookup** — https://www.geojs.io/
   - **Geocoding** — https://nominatim.org/
   - **The Weather Data** — https://open-meteo.com/en
-  - **World time** — http://worldtimeapi.org/
+  - **Time API** — https://www.timeapi.io/
 
 ## Features
   - Shows the current weather in detail at a given location
@@ -29,8 +29,5 @@ None of these API require authentication.
 
 ## Usage
 - Clone the repo
-- Run ```$ npm install```
-- Run ```$ npm start```
-  
-## Attribution
-Animated weather icons by https://www.amcharts.com/free-animated-svg-weather-icons/ 
+- Install dependencies ```$ npm install```
+- Serve ```$ npm dev```
