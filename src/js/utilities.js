@@ -88,6 +88,10 @@ export class Utilities {
       case 85:
       case 86:
         return 'Snow showers';
+      case 95:
+      case 96:
+      case 99:
+        return 'Thunderstorm'
       default:
         return 'ERROR: Incorrect weather status code'
     }
@@ -150,6 +154,7 @@ export class Utilities {
       case 'Rain':
         return '/rain.png';
       case 'Showers':
+      case 'Thunderstorm':
         return '/showers.png';
       case 'Freezing rain':
         return '/freezing-rain.png';
