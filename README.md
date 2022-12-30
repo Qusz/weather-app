@@ -14,7 +14,7 @@ https://weather-app-three-chi-90.vercel.app/
 ## APIs
 None of these API require authentication.
 
-  - **IP IP Geolocation lookup** — https://www.geojs.io/
+  - **IP Geolocation lookup** — https://www.geojs.io/
   - **Geocoding** — https://nominatim.org/
   - **The Weather Data** — https://open-meteo.com/en
   - **Time API** — https://www.timeapi.io/
