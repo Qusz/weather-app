@@ -1,11 +1,12 @@
 export class Utilities {
-  longTime(time) {
+  longTime(time, timezone) {
     const date = Date.parse(time);
     const options = {
       month: 'long', 
       day: 'numeric', 
       hour: 'numeric', 
       minute: 'numeric',
+      timeZone: timezone
     }
 
     const timeNow = new Intl.DateTimeFormat('en-GB', options).format(date);

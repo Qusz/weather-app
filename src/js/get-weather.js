@@ -33,7 +33,7 @@ export function getWeather() {
           return time.getTime(data.timezone);
         })
         .then(data => {
-          ui.showCurrentTime(data.datetime);
+          ui.showCurrentTime(data.datetime, data.timezone);
           return data
         })
         .catch((error) => {
@@ -57,7 +57,7 @@ export function getWeather() {
           return time.getTime(data.timezone);
         })
         .then(data => {
-          ui.showCurrentTime(data.datetime);
+          ui.showCurrentTime(data.datetime, data.timezone);
         })
         .catch (error => {
           ui.showAlert(error.message);

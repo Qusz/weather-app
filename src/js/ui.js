@@ -26,8 +26,8 @@ export class UI {
     return document.querySelector(target);
   }
 
-  showCurrentTime(time) {
-    this.refs.currentTime.textContent = this.utl.longTime(time);
+  showCurrentTime(time, timezone) {
+    this.refs.currentTime.textContent = this.utl.longTime(time, timezone);
   }
 
   showLocation(city, country) {
